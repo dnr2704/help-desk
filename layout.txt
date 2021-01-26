@@ -1,0 +1,33 @@
+Visão usuário
+
+01) tela de login
+02) menu
+	home
+
+Bem-vindo(a) fulano ao seu painel de relacionamento com o Hotel da WEB.
+ 	
+Suporte
+Tickets PENDENTES	0
+Tickets ATENDIDOS	0
+ver meus tickets 	link
+
+
+	suporte (financeiro/técnico)
+	meus dados
+	serviços
+	cobranças
+	sair
+
+=============================
+Visão admin
+
+01) tela de login
+02) menu
+	cadastro de clientes
+	cadastro de serviços
+	cadastro de usuários
+	cadastro de formas de pagamento
+		
+		
+Banco
+		
