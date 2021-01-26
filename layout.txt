@@ -4,7 +4,7 @@ Visão usuário
 02) menu
 	home
 
-Bem-vindo(a) fulano ao seu painel de relacionamento com o Hotel da WEB.
+Bem-vindo(a) fulano ao seu painel de relacionamento com o nosso sistema.
  	
 Suporte
 Tickets PENDENTES	0
