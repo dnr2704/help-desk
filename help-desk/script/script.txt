@@ -23,6 +23,17 @@ create table Empresa
 
 insert into Empresa (codigo,nomefantasia,razaosocial) values ('0001','MINHA EMPRESA','MINHA EMPRESA LTDA');
 
+create table Usuario
+(
+	id integer not null primary key auto_increment,	
+	login varchar(20) not null,
+	senha varchar(200) not null,
+	novasenha varchar(1),
+	ativo varchar(1),
+	idemp integer not null
+);
+alter table Usuario add constraint fk_usuxemp foreign key(idemp) references Empresa(id);
+
 create table Servico
 (
 	id integer not null primary key auto_increment,
@@ -36,7 +47,6 @@ alter table Servico add constraint fk_serxemp foreign key(idemp) references Empr
 create table Cliente
 (
 	id integer not null primary key auto_increment,
-	idemp integer not null,
 	codigo varchar(200),
 	ativo varchar(1),
 	datacadastro datetime,
@@ -55,11 +65,10 @@ create table Cliente
 	telefone1 varchar(13),
 	telefone2 varchar(13),
 	observacoes text,
-	email varchar(200) not null,
-	senha varchar(200) not null
+	idusu integer not null
 );
 
-alter table Cliente add constraint fk_clixemp foreign key(idemp) references Empresa(id);
+alter table Cliente add constraint fk_clixusu foreign key(idusu) references Usuario(id);
 
 create table MotivoCancelamento
 (
