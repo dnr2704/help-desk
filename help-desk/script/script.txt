@@ -67,7 +67,7 @@ create table MotivoCancelamento
 	codigo varchar(20) not null,
 	descricao varchar(200) not null,
 	ativo varchar(1),
-	idemp integer not null	
+	idemp integer not null
 );
 alter table MotivoCancelamento add constraint fk_motxemp foreign key(idemp) references Empresa(id);
 
