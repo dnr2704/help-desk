@@ -34,6 +34,8 @@ create table Usuario
 );
 alter table Usuario add constraint fk_usuxemp foreign key(idemp) references Empresa(id);
 
+/**/
+
 create table Servico
 (
 	id integer not null primary key auto_increment,
