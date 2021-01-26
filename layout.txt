@@ -27,7 +27,4 @@ Visão admin
 	cadastro de serviços
 	cadastro de usuários
 	cadastro de formas de pagamento
-		
-		
-Banco
-		
+	

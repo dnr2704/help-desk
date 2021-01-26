@@ -1,0 +1,110 @@
+create table Empresa
+(
+	id integer not null primary key auto_increment, 
+	ativo varchar(1),	
+	codigo varchar(20) not null,
+	razaosocial varchar(200) not null,
+	nomefantasia varchar(200) not null,
+	email varchar(200),	
+	cnpj varchar(100),
+	endereco varchar(200),
+	numero varchar(10),
+	complemento varchar(100),
+	bairro varchar(100),
+	cidade varchar(100),
+	cep varchar(10),
+	uf varchar(2),
+	celular varchar(14),
+	whatsapp varchar(1),
+	telefone1 varchar(13),
+	telefone2 varchar(13),
+	observacoes text
+);
+
+insert into Empresa (codigo,nomefantasia,razaosocial) values ('0001','MINHA EMPRESA','MINHA EMPRESA LTDA');
+
+create table Servico
+(
+	id integer not null primary key auto_increment,
+	codigo varchar(20) not null,
+	descricao varchar(200) not null,
+	ativo varchar(1),
+	idemp integer not null
+);
+alter table Servico add constraint fk_serxemp foreign key(idemp) references Empresa(id);
+insert into Servico(descricao,valor,local,ativo,idemp) values('Suporte técnico mensal',100,'S',1);
+
+create table Cliente
+(
+	id integer not null primary key auto_increment,
+	idemp integer not null,
+	codigo varchar(200),
+	ativo varchar(1),
+	datacadastro datetime,
+	tipopessoa varchar(1) not null,
+	documento varchar(18) not null, 
+	nome varchar(200) not null,	
+	endereco varchar(200),
+	numero varchar(10),
+	complemento varchar(100),
+	bairro varchar(100),
+	cidade varchar(100),
+	cep varchar(10),
+	uf varchar(2),
+	celular varchar(14),
+	whatsapp varchar(1),
+	telefone1 varchar(13),
+	telefone2 varchar(13),
+	observacoes text,
+	email varchar(200) not null,
+	senha varchar(200) not null
+);
+
+alter table Cliente add constraint fk_clixemp foreign key(idemp) references Empresa(id);
+
+create table MotivoCancelamento
+(
+	id integer not null primary key auto_increment,	
+	codigo varchar(20) not null,
+	descricao varchar(200) not null,
+	ativo varchar(1),
+	idemp integer not null	
+);
+alter table MotivoCancelamento add constraint fk_motxemp foreign key(idemp) references Empresa(id);
+
+create table Chamado
+(
+	id integer not null primary key auto_increment,
+	codigo varchar(20) not null,
+	idmotcan integer,
+	status varchar(1), /*A berto, F echado, C ancelado*/	
+	dataabertura datetime,
+	datastatus datetime,	
+	idcli integer not null,	
+	assunto varchar(200) not null,
+	mensagem text,
+	mensagemerro text
+);
+alter table Chamado add constraint fk_chaxcli foreign key(idcli) references Cliente(id);
+alter table Chamado add constraint fk_chaxmot foreign key(idmotcan) references MotivoCancelamento(id);
+
+create table ChamadoServico
+(
+	id integer not null primary key auto_increment,
+	idcha integer not null,
+	idser integer not null,
+	valor decimal(9,2) not null,
+	horainicio datetime,
+	horafim datetime,
+	observacoes varchar(200)
+)
+alter table ChamadoServico add constraint fk_chaxser1 foreign key(idcha) references Chamado(id);
+alter table ChamadoServico add constraint fk_chaxser2 foreign key(idser) references Chamado(id);
+
+create table Anexo
+(
+	id integer not null primary key auto_increment,
+	idcha integer not null,
+	nome varchar(200) not null,
+)
+alter table Anexo add constraint fk_anexcha foreign key(idcha) references Chamado(id);
