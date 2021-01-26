@@ -32,7 +32,6 @@ create table Servico
 	idemp integer not null
 );
 alter table Servico add constraint fk_serxemp foreign key(idemp) references Empresa(id);
-insert into Servico(descricao,valor,local,ativo,idemp) values('Suporte técnico mensal',100,'S',1);
 
 create table Cliente
 (
@@ -97,14 +96,6 @@ create table ChamadoServico
 	horainicio datetime,
 	horafim datetime,
 	observacoes varchar(200)
-)
+);
 alter table ChamadoServico add constraint fk_chaxser1 foreign key(idcha) references Chamado(id);
 alter table ChamadoServico add constraint fk_chaxser2 foreign key(idser) references Chamado(id);
-
-create table Anexo
-(
-	id integer not null primary key auto_increment,
-	idcha integer not null,
-	nome varchar(200) not null,
-)
-alter table Anexo add constraint fk_anexcha foreign key(idcha) references Chamado(id);
