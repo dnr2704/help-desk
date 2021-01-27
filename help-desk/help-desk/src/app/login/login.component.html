@@ -1,0 +1,44 @@
+<!--
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+-->
+<!------ Include the above in your HEAD tag ---------->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+<form (ngSubmit)="onSubmit()" [formGroup]="formulario">
+    <div class="container">
+        <br>
+        <p class="text-center">Atlants - Controle de Chamados</p>
+        <hr>
+        <div class="card card-container">
+            <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+            <p id="profile-name" class="profile-name-card"></p>
+            <div class="form-signin">
+                <span id="reauth-email" class="reauth-email"></span>
+                <label>Informe seus dados de acesso</label>
+                <input type="email" required formControlName="email" class="form-control" placeholder="Seu e-mail">
+                <div class="red-text" *ngIf="!formulario.get('email').valid && formulario.controls['email'].touched && !formulario.controls['email'].errors?.email"> 
+                    Esse campo é obrigatório 
+                </div>
+                <div class="red-text" *ngIf="!formulario.get('email').valid && formulario.controls['email'].touched && formulario.controls['email'].errors?.email"> 
+                    E-mail inválido
+                </div>                                
+
+                <input type="password" required formControlName="senha" class="form-control" placeholder="Sua senha">
+                <div class="red-text" *ngIf="!formulario.get('senha').valid && formulario.controls['senha'].touched && !formulario.controls['senha'].errors?.minlength"> 
+                    Esse campo é obrigatório 
+                </div>                
+                <div class="red-text" *ngIf="formulario.controls['senha'].errors?.minlength"> 
+                    A senha deve ter pelo menos 3 caracteres
+                </div>                                
+
+                <div id="remember" class="checkbox">
+                    <label> <input type="checkbox" value="remember-me"> Salvar dados </label>
+                </div>
+                <button  class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Entrar</button>
+            </div><!-- /div -->
+            <a class="forgot-password" [routerLink]="['/esqueci-senha']">Esqueci minha senha</a>
+        </div><!-- /card-container -->
+    </div>
+    <!--container end.//-->
+</form>
